@@ -32,6 +32,7 @@ var AppRouter = Backbone.Router.extend({
         }});
         this.headerView.selectMenuItem('home-menu');
     },
+
     ownerList: function(owner,page) {
         console.log('ownerList');
         var p = page ? parseInt(page, 10) : 1;
@@ -41,6 +42,7 @@ var AppRouter = Backbone.Router.extend({
         }});
         this.headerView.selectMenuItem('home-menu');
     },
+
     itemDetails: function (id) {
         var item = new Item({_id: id});
         item.fetch({success: function(){
