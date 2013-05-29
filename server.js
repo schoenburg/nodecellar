@@ -12,8 +12,8 @@ app.configure(function () {
     app.use(express.bodyParser()),
     app.use(express.static(path.join(__dirname, 'public')));
 });
-app.get('/owner/:owner/items', item.findByOwner);
-
+app.get('/owner/:term/items', item.findByOwner);
+app.get('/category/:term/items', item.findByCategory);
 app.get('/items', item.findAll);
 app.get('/items/:id', item.findById);
 app.post('/items', item.addItem);

@@ -138,3 +138,9 @@ legend {
 * {
     word-wrap:break-word;
 }
+.filter {
+    padding-top: 6px;
+}
+.filter select {
+    margin-bottom: 0;
+}

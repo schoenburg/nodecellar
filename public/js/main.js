@@ -6,8 +6,8 @@ var AppRouter = Backbone.Router.extend({
         "items/page/:page"	: "list",
         "items/add"         : "addItem",
         "items/:id"         : "itemDetails",
-        "owner/:owner/items": "ownerList",
-        "owner/:owner/items/page/:page": "ownerList",
+        "filter/:filter/:term/items": "filterList",
+        "filter/:filter/:term/items/page/:page": "filterList",
         "about"             : "about"
     },
 
@@ -33,10 +33,11 @@ var AppRouter = Backbone.Router.extend({
         this.headerView.selectMenuItem('home-menu');
     },
 
-    ownerList: function(owner,page) {
-        console.log('ownerList');
+    filterList: function(filter,term,page) {
+        console.log(term);
+        console.log(filter)
         var p = page ? parseInt(page, 10) : 1;
-        var itemList = new OwnerItemCollection([],{owner_id:owner});
+        var itemList = new FilteredItemCollection([],{term:term, filter: filter});
         itemList.fetch({success: function(){
             $("#content").html(new ItemListView({model: itemList, page: p}).el);
         }});

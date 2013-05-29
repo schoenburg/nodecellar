@@ -92,10 +92,20 @@ exports.deleteItem = function(req, res) {
 
 
 exports.findByOwner = function(req, res) {
-    var owner = req.params.owner;
-    console.log('Finding items owned by: ' + owner);
+    var term = req.params.term;
+    console.log('Finding items owned by: ' + term);
     db.collection('items', function(err, collection) {
-        collection.find({ owner: owner }).toArray(function(err, items) {
+        collection.find({ owner: term }).toArray(function(err, items) {
+            res.send(items);
+        });
+    });
+};
+
+exports.findByCategory = function(req, res) {
+    var term = req.params.term;
+    console.log('Finding items in category: ' + term);
+    db.collection('items', function(err, collection) {
+        collection.find({ category: term }).toArray(function(err, items) {
             res.send(items);
         });
     });
